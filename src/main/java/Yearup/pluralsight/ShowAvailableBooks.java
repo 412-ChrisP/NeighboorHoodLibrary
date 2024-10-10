@@ -15,22 +15,34 @@ public class ShowAvailableBooks
         }
 
         System.out.println("\nPlease select a book to check out or Exit (0): \n");
-        int userInput;
-        userInput = scanner.nextInt();
-        switch(userInput)
+        int userInput = scanner.nextLine();
+        switch (userInput)
         {
             case 0:
                 System.out.println("Returning...");
                 break;
-            case 1:
-
             default:
-                System.out.println("Invalid Input!");
+                if (userInput > 0 && userInput <= bookCounter)
+                {
+                    Books selectedBook = bookInventory[userInput - 1];
+
+                    if (selectedBook.isCheckedOut())
+                    {
+                        System.out.println("This book is already checked out!");
+                    }
+                    else
+                    {
+                        System.out.print("Please enter your name to check out the book: ");
+                        scanner.nextLine();
+                        String name = scanner.nextLine();
+                        selectedBook.checkOut(name);
+                    }
+                }
+                else
+                {
+                    System.out.println("Invalid Input! Please try again.");
+                }
+                break;
         }
-        do
-        {
-
-
-        }while(userInput != 7);
-    }
+    } while (userInput != 0);
 }

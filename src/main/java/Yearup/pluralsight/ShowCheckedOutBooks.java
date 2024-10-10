@@ -4,15 +4,12 @@ import java.util.Scanner;
 
 public class ShowCheckedOutBooks
 {
-    public static void showCheckedOutBooks(Books[] bookInventory, int bookCounter)
-    {
+    public static void showCheckedOutBooks(Books[] bookInventory, int bookCounter) {
         Scanner scanner = new Scanner(System.in);
         boolean anyCheckedOutBooks = false;
         System.out.println("Books currently checked out:");
-        for(int i = 0; i < bookCounter; i++)
-        {
-            if(bookInventory[i].isCheckedOut())
-            {
+        for (int i = 0; i < bookCounter; i++) {
+            if (bookInventory[i].isCheckedOut()) {
                 anyCheckedOutBooks = true;
                 System.out.println(bookInventory[i].toString());
             }
@@ -23,8 +20,7 @@ public class ShowCheckedOutBooks
                 "X - to go back to home screen\n");
         String userInput = scanner.next().toUpperCase();
 
-        switch(userInput)
-        {
+        switch (userInput) {
             case "C":
                 CheckInABook checkInABook = new CheckInABook();
                 checkInABook.checkIn(bookInventory, bookCounter);
